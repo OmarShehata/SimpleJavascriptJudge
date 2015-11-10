@@ -1,0 +1,26 @@
+body {
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+#editor,#feedback {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+#editor {
+    right: 50%;
+    left: 0;
+}
+
+#feedback {
+    right: 0;
+    left: 52%;
+    overflow-y:scroll;
+}
+
+#feedback p {
+    font-size:17px;
+}

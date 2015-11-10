@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	  <meta charset="UTF-8">
+	  <title>JS Auto Judge</title>
+	  <!-- Jquery 1.x for IE8 support -->
+	  <script src="lib/jquery-1.11.3.min.js"></script>
+	  <!-- Include ACE for a fancy code editor! -->
+	  <script src="lib/ace-editor/ace.js" type="text/javascript" charset="utf-8"></script>
+	  <!-- Include acorn for Javascript parsing -->
+	  <script src="lib/acorn.js" type="text/javascript"></script>
+	  <!-- Our general API code lives here -->
+	  <script src="judge.js" type="text/javascript"></script>
+
+	  <link rel="stylesheet" type="text/css" href="index.css">
+	</head>
+
+	<body>
+		<!-- Editor box -->
+		<pre id="editor"></pre>
+		<!-- Feedback box -->
+		<div id="feedback">
+			<h1>Welcome to Omar's Automatic Javascript Judge! </h1>
+			<p id="results">Please start typing some code</p>
+		</div>
+
+		<!-- Example of using the API -->
+	  	<script src="example.js" type="text/javascript"></script>
+	</body>
+</html>
