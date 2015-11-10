@@ -26,6 +26,17 @@ The only reason it needs a local web server is because it attempts to load the `
 - **judge_thread.js** for web browsers that support Web Workers, it runs the heavy lifting in a seperate process so as not to hang the client
 - **example.js** shows you how to use `judge.js` and write tests for it
 
+## Overview of how judge.js works
+
+1. The first step is to include the file as shown in `index.html`
+2. You can then write tests as shown in `example.js` (explained further below) and add them using `Judge.addTest(testObject)`
+3. Run `Judge.examine(codeString)` which takes in Javascript code as a string, parses it, and returns an array of all the test objects created, and a boolean value stating whether this test failed or succeeded. If there was a syntax error, you'll find it as `feedback['error']` where `feedback` is the object returned. 
+
 ### How to write your own tests
 
 
+```javascript
+var varTest = {}
+varTest['structure'] = {'var_foo':'bar'}
+varTest['description'] = "Create a variable called 'foo' and initialize it with 'bar'"
+```
