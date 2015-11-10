@@ -51,7 +51,10 @@ if(WORKER_SUPPORT){
 	worker.postMessage(JSON.stringify(Judge.activeTests)); // Initialize the worker judge with our tests
 }
 
-
+//We don't want to run our parse/examine check for EVERY single keystroke
+//Because when the user is still typing, it's likely going to result in a syntax error, and it looks annoying and jittery 
+//Plus on browsers that don't support web workers, having this 1/10th of a second delay reduces the frustration that may occur from blocking while typing
+//So we have this little delay happen before we check
 var typing = 0;
 var checked = false;
 
