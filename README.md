@@ -34,9 +34,51 @@ The only reason it needs a local web server is because it attempts to load the `
 
 ### How to write your own tests
 
+Tests are created as objects and passed to the Judge. Here is a simple example of a test that will check if a variable named "foo" exists and is initialized with a value "bar"
 
 ```javascript
 var varTest = {}
 varTest['structure'] = {'var_foo':'bar'}
 varTest['description'] = "Create a variable called 'foo' and initialize it with 'bar'"
+//Now we give it to the judge
+Judge.addTest(varTest)
 ```
+
+The `structure` attribute is the only crucial one for the API to work. The `description` is just useful for showing the user which tests have failed and which have passed on the web page.
+
+If we just want to have a variable exist and not care about its value, we can use `vari_` instead of `var_` (where the **i** means it need not be initialized)
+
+```javascript
+varTest['structure'] = {'vari_x':0}
+```
+
+This will pass as long as there is some variable named `x`.
+
+You can also use the attribute `exclude` to say we DON'T want a certain function or structure. For example, let's say we DO NOT want a while loop, then our structure would be:
+
+```javascript
+noWhile['structure'] = {'while':1}
+noWhile['exclude'] = true
+```
+
+This check will fail if the user writes 1 or more while loops. If we set it to 3 instead, then it will pass as long as the user hasn't reached 3 while loops.
+
+We can also define more elaborate structures. If we want to have 2 if statements inside of a for loop, we can write:
+
+```javascript
+elaborateTest['structure'] = {'for':{'if':2}}
+```
+
+We can nest these structures as much as we want.
+
+Finally, we can also check for functions:
+
+```javascript
+elaborateTest['structure'] = {'function_helloworld':{'vari_foo':0}}
+```
+
+This will check for a function called 'helloworld' containing the variable 'foo'.
+
+### Additional functions
+
+You can also use `Judge.clearTests()` to remove currently active tests and add new ones.
